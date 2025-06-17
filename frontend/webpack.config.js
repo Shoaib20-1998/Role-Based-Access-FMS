@@ -37,13 +37,12 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: "./dist",
-    port: 3000,
-    open: true,
-    hot: true,
-    liveReload: true,
-    watchFiles: ['src/**/*'],
-    static: { directory: path.resolve(__dirname, 'dist') },
+    devServer: {
+      static: "./dist",
+      port: 3000,
+      open: true,
+      hot: true,
+    },
   },
   mode: "development", // Change to 'production' for production build
 };
