@@ -41,6 +41,9 @@ module.exports = {
     port: 3000,
     open: true,
     hot: true,
+    liveReload: true,
+    watchFiles: ['src/**/*'],
+    static: { directory: path.resolve(__dirname, 'dist') },
   },
   mode: "development", // Change to 'production' for production build
 };
