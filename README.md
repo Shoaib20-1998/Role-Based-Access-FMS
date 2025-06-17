@@ -4,15 +4,15 @@
 Frontend Architecture And Flow:-
 
 Tech Stack:-
-Webpack
-Tailwind
+Webpack, 
+Tailwind, 
 React.js
 
 Backend Architecture And Flow:-
 
 Tech Stack:-
-Node.js
-Express.js
+Node.js, 
+Express.js, 
 MongoDB
 
 
