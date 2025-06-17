@@ -37,10 +37,12 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: "./dist",
-    port: 3000,
-    open: true,
-    hot: true,
+    devServer: {
+      static: "./dist",
+      port: 3000,
+      open: true,
+      hot: true,
+    },
   },
   mode: "development", // Change to 'production' for production build
 };
