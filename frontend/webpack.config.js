@@ -23,6 +23,7 @@ module.exports = {
           "style-loader",
           "css-loader",
           "sass-loader",
+          "postcss-loader"
         ],
       },
       {
@@ -37,12 +38,10 @@ module.exports = {
     }),
   ],
   devServer: {
-    devServer: {
-      static: "./dist",
-      port: 3000,
-      open: true,
-      hot: true,
-    },
+    static: "./dist",
+    port: 3000,
+    open: true,
+    hot: true,
   },
   mode: "development", // Change to 'production' for production build
 };

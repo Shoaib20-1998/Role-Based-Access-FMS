@@ -2,9 +2,7 @@ import React from 'react'
 
 
 function App() {
-    return (<div>
-        Hy i m your applicatin
-        Hy i m your applicatin
+    return (<div className="bg-sky-950">
         Hy i m your applicatin
 
     </div>)
