@@ -1,4 +1,5 @@
-name: CI: Frontend & Backend Check
+
+name: Frontend & Backend Check
 
 on:
   pull_request:
