@@ -1,4 +1,4 @@
-name: ⚙️ CI: Frontend & Backend Check
+name: CI: Frontend & Backend Check
 
 on:
   pull_request:
