@@ -1,6 +1,5 @@
 name: ⚙️ CI: Frontend & Backend Check
 
-# 🧨 Trigger this workflow on PRs to the dev branch
 on:
   pull_request:
     branches:
@@ -10,42 +9,31 @@ jobs:
   frontend:
     name: 🧪 Frontend CI
     runs-on: ubuntu-latest
-
-    # 📁 Set working directory to ./frontend
     defaults:
       run:
         working-directory: ./frontend
 
     steps:
-      # 📥 Checkout your GitHub repo
       - uses: actions/checkout@v4
 
-      # 🧱 Install frontend dependencies
       - name: Install dependencies
         run: npm install
 
-      # 🏗 Build the React app
       - name: Build frontend
         run: npm run build
-
 
   backend:
     name: 🔍 Backend CI
     runs-on: ubuntu-latest
-
-    # 📁 Set working directory to ./backend
     defaults:
       run:
         working-directory: ./backend
 
     steps:
-      # 📥 Checkout your GitHub repo
       - uses: actions/checkout@v4
 
-      # 🧱 Install backend dependencies
       - name: Install dependencies
         run: npm install
 
-      # ✅ Basic syntax check of backend entry file
       - name: Syntax check
         run: node -c index.js || echo "You can add ESLint/test later"
