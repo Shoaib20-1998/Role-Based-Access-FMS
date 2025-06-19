@@ -4,9 +4,10 @@ For this project we are going to use monorepo approach we write fronted/backend 
 ## Frontend Architecture And Flow:-
 
 ## Tech Stack:-
-- Webpack, 
-- Tailwind, 
+- Webpack 
+- Tailwind
 - React.js
+- Typescript
 
 ## Backend Architecture And Flow:-
 
@@ -15,6 +16,8 @@ For this project we are going to use monorepo approach we write fronted/backend 
 - Express.js, 
 - MongoDB
 
+
+# System Design:-
 
 
 
@@ -35,3 +38,8 @@ For managing our application Depedency we are going to use Docker. but the Quest
 
 docker-compose.yml- for production
 docker-compose.dev.yml - for development
+
+
+
+
+

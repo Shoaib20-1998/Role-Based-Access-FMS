@@ -1,0 +1,21 @@
+# frontend/Dockerfile.dev
+
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+# COPY package-lock.json ./
+
+RUN npm install
+
+# Copy rest of the code
+COPY . .
+
+# Expose port used by webpack-dev-server
+EXPOSE 3000
+
+# Run the dev server
+CMD ["npm", "run", "start"]

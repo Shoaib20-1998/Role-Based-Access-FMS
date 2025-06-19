@@ -8,6 +8,6 @@ app.get('/', (req, res) => {
     res.send('hyyyy')
 })
 
-app.listen(3000, (res) => {
-    console.log('Server is running 3000')
+app.listen(5000, (res) => {
+    console.log('Server is running 5000')
 })
