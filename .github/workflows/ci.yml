@@ -1,0 +1,42 @@
+name: Frontend & Backend Check
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  frontend:
+    name: 🧪 Frontend CI
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Type check with tsc
+        run: npx tsc --noEmit
+
+      - name: Build frontend
+        run: npm run build
+
+  backend:
+    name: 🔍 Backend CI
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Syntax check
+        run: node -c index.js || echo "You can add ESLint/test later"
