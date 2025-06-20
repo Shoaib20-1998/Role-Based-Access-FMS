@@ -1,0 +1,32 @@
+name: Deploy Frontend to Vercel (Manual)
+
+on:
+  workflow_dispatch: # 👉 Manual trigger only
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build app
+          cd frontend
+          npm run build
+
+      - name: Deploy to Vercel
+        run: |
+          npm install -g vercel
+          cd frontend
+          vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }} \
+            --org-id ${{ secrets.VERCEL_ORG_ID }} \
+            --project-id ${{ secrets.VERCEL_PROJECT_ID }}
