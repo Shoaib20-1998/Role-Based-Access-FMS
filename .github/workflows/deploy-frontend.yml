@@ -25,9 +25,8 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
       - name: Deploy to Vercel
-        uses: BetaHuhn/deploy-to-vercel-action@v1
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: vercel --prod --confirm --token ${{ secrets.VERCEL_TOKEN }} --scope shoaib201998s
