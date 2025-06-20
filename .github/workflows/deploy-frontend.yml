@@ -1,4 +1,4 @@
-name: 🚀 CD: Deploy to Vercel (Frontend)
+name: Deploy to Vercel (Frontend)
 
 on:
   workflow_dispatch:  # 👈 Allows manual trigger from GitHub UI
