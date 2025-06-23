@@ -1,32 +1,56 @@
-name: Deploy Frontend to Vercel (Manual)
+name: Deploy Frontend and Backend (Manual)
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  push:
-    branches:
-      - dev
-  pull_request:
-    branches:
-      - dev
-
+  workflow_dispatch: # Manual trigger
 jobs:
-  Deploy-Production:
+  Deploy-Frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
-      - name: Debug Directory Structure
-        run: ls -la
-      - name: Debug Frontend Folder Contents
-        run: ls -la ./frontend
+      - name: Verify Frontend Directory
+        run: |
+          if [ ! -d "./frontend" ]; then
+            echo "Error: ./frontend directory does not exist!"
+            exit 1
+          fi
+          ls -la ./frontend
+      - name: Install Dependencies
+        run: npm install
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Debug Vercel Build
+      - name: Build Frontend
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
+      - name: Deploy Frontend
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+  Deploy-Backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verify Backend Directory
+        run: |
+          if [ ! -d "./backend" ]; then
+            echo "Error: ./backend directory does not exist!"
+            exit 1
+          fi
+          ls -la ./backend
+      - name: Install Dependencies
+        run: npm install
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Backend
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Backend
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
