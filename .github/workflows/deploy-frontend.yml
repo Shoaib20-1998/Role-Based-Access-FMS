@@ -17,13 +17,6 @@ jobs:
         working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
-      - name: Verify Frontend Directory
-        run: |
-          if [ ! -d "./frontend" ]; then
-            echo "Error: ./frontend directory does not exist!"
-            exit 1
-          fi
-          ls -la ./frontend
       - name: Install Dependencies
         run: npm install
       - name: Install Vercel CLI
@@ -42,13 +35,6 @@ jobs:
         working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
-      - name: Verify Backend Directory
-        run: |
-          if [ ! -d "./backend" ]; then
-            echo "Error: ./backend directory does not exist!"
-            exit 1
-          fi
-          ls -la ./backend
       - name: Install Dependencies
         run: npm install
       - name: Install Vercel CLI
